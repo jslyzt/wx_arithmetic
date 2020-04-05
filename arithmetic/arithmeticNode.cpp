@@ -685,7 +685,7 @@ void arithmeticBaseM::msdradix_sort(int* arr, int begin, int end, int dight, int
         nStep ++;
     }
     //释放空间
-    delete bucket;
+    delete[] bucket;
 
     //对各桶中数据进行再排序
     for (i = 0; i < radix; i++)
