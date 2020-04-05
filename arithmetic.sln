@@ -1,20 +1,25 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arithmetic", "arithmetic\arithmetic.vcproj", "{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "arithmetic", "arithmetic\arithmetic.vcxproj", "{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Release|Win32 = Release|Win32
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Debug|Win32.ActiveCfg = Debug|Win32
-		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Debug|Win32.Build.0 = Debug|Win32
-		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Release|Win32.ActiveCfg = Release|Win32
-		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Release|Win32.Build.0 = Release|Win32
+		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Debug|x64.ActiveCfg = Debug|x64
+		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Debug|x64.Build.0 = Debug|x64
+		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Release|x64.ActiveCfg = Release|x64
+		{D7A629DC-2132-470C-88C9-25A9BFDA5D2B}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB27D01F-29CC-4AB5-9259-B1CFE1ABD17B}
 	EndGlobalSection
 EndGlobal

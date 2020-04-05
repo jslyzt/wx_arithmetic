@@ -3,27 +3,27 @@
 
 renderTimer::renderTimer(arithForme* pFrame)
 {
-	m_pFrame = pFrame;
+    m_pFrame = pFrame;
 }
 
 renderTimer::~renderTimer(void)
 {
-	m_pFrame = NULL;
+    m_pFrame = NULL;
 }
 
 
-void	renderTimer::Notify()
+void renderTimer::Notify()
 {
-	m_pFrame->PaintFrame();
+    m_pFrame->PaintFrame();
 }
 
-void	renderTimer::StartLoop(int interval)
+void renderTimer::StartLoop(int interval)
 {
-	StopLoop();
-	wxTimer::Start(interval);			//º‰∏ÙX∫¡√Î
+    StopLoop();
+    wxTimer::Start(interval);   //º‰∏ÙX∫¡√Î
 }
 
-void	renderTimer::StopLoop()
+void renderTimer::StopLoop()
 {
-	wxTimer::Stop();
+    wxTimer::Stop();
 }

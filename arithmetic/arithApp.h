@@ -1,6 +1,6 @@
 #pragma once
 
-#include "wx/wx.h"
+#include <wx/wx.h>
 #include "arithForme.h"
 
 // 定义应用程序类
