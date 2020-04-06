@@ -378,13 +378,13 @@ void slistDialog::getShowData(vector<int>& rList)
 {
     rList.clear();
     map<int, int> sortMap;
-    for (int i = 0; i < showgrid->GetNumberRows(); i++)
+    for (int i = 0; i < showgrid->GetRows(); i++)
     {
         wxString infoId = showgrid->GetCellValue(i, 0);
         wxString infoIndex = showgrid->GetCellValue(i, 2);
         sortMap[wxAtoi(infoIndex)] = wxAtoi(infoId);
     }
-    for (int i = 0; i < showgrid->GetNumberRows(); i++)
+    for (int i = 0; i < showgrid->GetRows(); i++)
     {
         if (sortMap.find(i + 1) != sortMap.end())
         {

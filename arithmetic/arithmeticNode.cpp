@@ -99,7 +99,7 @@ int arithmeticData::getStep()
 
 void arithmeticData::exchange(int nStep, int posA, int posB)
 {
-    int nSize = m_Base.size();
+    auto nSize = (int)m_Base.size();
     if (posA < 0 || posA >= nSize || posB < 0 || posB >= nSize || m_pSort == NULL)
     {
         return;
@@ -115,7 +115,7 @@ void arithmeticData::exchange(int nStep, int posA, int posB)
 
 void arithmeticData::addValue(int nStep, int nPos, int nVaule)
 {
-    int nSize = m_Base.size();
+    auto nSize = (int)m_Base.size();
     if (nPos < 0 || nPos >= nSize || m_pSort == NULL)
     {
         return;
