@@ -102,7 +102,7 @@ void arithmeticMgr::init(int nMax)
     ///*
     for (map<int, arithmeticNode*>::iterator iter = m_rFuncList.begin(); iter != m_rFuncList.end(); iter ++)
     {
-        if (iter->first > EarithmeticFunc_Quick)
+        if (iter->first > EarithmeticFunc_BinaryTree)
         {
             break;
         }
@@ -110,7 +110,7 @@ void arithmeticMgr::init(int nMax)
     }
     //*/
 
-    //m_rShowList.push_back(m_rFuncList[EarithmeticFunc_Quick]);
+    //m_rShowList.push_back(m_rFuncList[EarithmeticFunc_Shell]);
 }
 
 void arithmeticMgr::refresh()

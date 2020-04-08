@@ -133,6 +133,7 @@
     <ClCompile Include="arithmeticNode.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="renderTimer.cpp" />
+    <ClCompile Include="sort\binaryTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="arithApp.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="arithmeticMgr.h" />
     <ClInclude Include="arithmeticNode.h" />
     <ClInclude Include="renderTimer.h" />
+    <ClInclude Include="sort\binaryTree.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

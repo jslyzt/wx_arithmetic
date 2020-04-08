@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="arithApp.cpp" />
+    <ClCompile Include="arithForme.cpp" />
+    <ClCompile Include="arithmeticMgr.cpp" />
+    <ClCompile Include="arithmeticNode.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="renderTimer.cpp" />
+    <ClCompile Include="sort\binaryTree.cpp">
+      <Filter>sort</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arithApp.h" />
+    <ClInclude Include="arithForme.h" />
+    <ClInclude Include="arithmeticMgr.h" />
+    <ClInclude Include="arithmeticNode.h" />
+    <ClInclude Include="renderTimer.h" />
+    <ClInclude Include="sort\binaryTree.h">
+      <Filter>sort</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="sort">
+      <UniqueIdentifier>{0df6cc30-c6b3-48b0-8e66-67cf2ea52cd4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

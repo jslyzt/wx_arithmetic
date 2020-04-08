@@ -1,4 +1,5 @@
 #include "arithmeticNode.h"
+#include "sort/binaryTree.h"
 #include <time.h>
 #include <stdlib.h>
 #include <fstream>
@@ -534,9 +535,9 @@ void arithmeticMerger::mergesort(int* arr, int first, int last, vector<int>& rTm
     if (first < last)
     {
         int mid = (first + last) / 2;
-        mergesort(arr, first, mid, rTmp, nStep, rData);			//左边有序
-        mergesort(arr, mid + 1, last, rTmp, nStep, rData);		//右边有序
-        mergearray(arr, first, mid, last, rTmp, nStep, rData);	//再将二个有序数列合并
+        mergesort(arr, first, mid, rTmp, nStep, rData);         //左边有序
+        mergesort(arr, mid + 1, last, rTmp, nStep, rData);      //右边有序
+        mergearray(arr, first, mid, last, rTmp, nStep, rData);  //再将二个有序数列合并
     }
 }
 ////////////////////////////////////////////////////
@@ -781,7 +782,6 @@ arithmeticChoose::arithmeticChoose(): arithmeticNode(EarithmeticFunc_Choose)
 }
 arithmeticChoose::~arithmeticChoose()
 {
-
 }
 
 void arithmeticChoose::sort(arithmeticData& rData)
@@ -829,7 +829,7 @@ arithmeticQuick::~arithmeticQuick()
 
 }
 
-void	arithmeticQuick::sort(arithmeticData& rData)
+void arithmeticQuick::sort(arithmeticData& rData)
 {
     int* pSort = rData.getSortData();
     int nSize = rData.getDataSize();
@@ -845,9 +845,9 @@ void arithmeticQuick::quickSort(int* arr, int low, int high, int& nStep, arithme
     {
         return;
     }
-    int	first	=	low;
-    int last	=	high;
-    int key		=	arr[first]; //用字表的第一个记录作为枢轴
+    int first = low;
+    int last = high;
+    int key = arr[first]; //用字表的第一个记录作为枢轴
     while (first < last)
     {
         while (first < last && arr[last] >= key)
@@ -887,7 +887,23 @@ arithmeticBinaryTree::~arithmeticBinaryTree()
 
 void arithmeticBinaryTree::sort(arithmeticData& rData)
 {
+    int* pSort = rData.getSortData();
+    int nSize = rData.getDataSize();
 
+    BinTree btree;
+    for (int i = 0; i < nSize; i++)
+    {
+        btree.insert(pSort[i]);
+    }
+    auto vals = btree.order();
+    auto step = (int)vals.size();
+
+    rData.setMaxStep(step);
+    for (int i = 0; i < step; i++)
+    {
+        pSort[i] = vals[i];
+        rData.saveStep(i);
+    }
 }
 
 ////////////////////////////////////////////////////
@@ -902,7 +918,35 @@ arithmeticShell::~arithmeticShell()
 
 void arithmeticShell::sort(arithmeticData& rData)
 {
+    int insertNum = 0;
+    int nStep = 0;
+    int* pSort = rData.getSortData();
+    int nSize = rData.getDataSize();
 
+    int gap = nSize / 2; // 步长初始化,注意如果当len<INCRGAP时，gap为0，所以为了保证进入循环，gap至少为1
+    while (gap != 0)
+    {
+        for (int i = gap; i < nSize; ++i) // 分组，在每个子序列中进行插入排序
+        {
+            insertNum = pSort[i];//将当前的元素值先存起来方便后面插入
+            int j = i;
+            while (j >= gap && insertNum < pSort[j - gap])//寻找插入位置
+            {
+                pSort[j] = pSort[j - gap];
+                j -= gap;
+
+                rData.saveStep(nStep);
+                nStep++;
+            }
+
+            pSort[j] = insertNum;
+            rData.saveStep(nStep);
+            nStep++;
+        }
+        gap = gap / 2;
+    }
+
+    rData.setMaxStep(nStep);
 }
 ////////////////////////////////////////////////////
 //堆排序
@@ -914,9 +958,50 @@ arithmeticHeap::~arithmeticHeap()
 
 }
 
+void arithmeticHeap::adjust_heap(int* a, int node, int size, int& step, arithmeticData& rData)
+{
+    int left = 2 * node + 1;
+    int right = 2 * node + 2;
+    int max = node;
+    if (left < size && a[left] > a[max])
+    {
+        max = left;
+    }
+    if (right < size && a[right] > a[max])
+    {
+        max = right;
+    }
+    if (max != node)
+    {
+        swap(a[max], a[node]);
+        rData.saveStep(step);
+        step++;
+
+        adjust_heap(a, max, size, step, rData);
+    }
+}
+
 void arithmeticHeap::sort(arithmeticData& rData)
 {
+    int* pSort = rData.getSortData();
+    int nSize = rData.getDataSize();
+    int nStep = 0;
 
+    for (int i = nSize / 2 - 1; i >= 0; --i)
+    {
+        adjust_heap(pSort, i, nSize, nStep, rData);
+    }
+
+    for (int i = nSize - 1; i >= 0; i--)
+    {
+        swap(pSort[0], pSort[i]);                   // 将当前最大的放置到数组末尾
+        rData.saveStep(nStep);
+        nStep++;
+
+        adjust_heap(pSort, 0, i, nStep, rData);     // 将未完成排序的部分继续进行堆排序
+    }
+
+    rData.setMaxStep(nStep);
 }
 
 ////////////////////////////////////////////////////

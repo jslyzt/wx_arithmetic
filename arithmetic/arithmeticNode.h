@@ -246,6 +246,7 @@ public:
     ~arithmeticHeap();
 
     virtual void sort(arithmeticData& rData);
+    void adjust_heap(int* a, int node, int size, int& step, arithmeticData& rData);
 };
 
 ////////////////////////////////////////////////////
