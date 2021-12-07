@@ -1,20 +1,16 @@
 #include "arithmeticMgr.h"
 
-arithmeticMgr::arithmeticMgr(void)
-{
+arithmeticMgr::arithmeticMgr(void) {
     m_rFuncList.clear();
     m_rShowList.clear();
     m_nMax = 0;
     m_iter = m_rShowList.end();
 }
 
-arithmeticMgr::~arithmeticMgr(void)
-{
+arithmeticMgr::~arithmeticMgr(void) {
 }
 
-
-void arithmeticMgr::init(int nMax)
-{
+void arithmeticMgr::init(int nMax) {
     m_nMax = nMax;
     m_rSortData.rondom(rand() % 10 + 20, nMax);
 
@@ -100,10 +96,8 @@ void arithmeticMgr::init(int nMax)
         m_rFuncList[pFunc->getType()] = pFunc;
     }
     ///*
-    for (map<int, arithmeticNode*>::iterator iter = m_rFuncList.begin(); iter != m_rFuncList.end(); iter ++)
-    {
-        if (iter->first > EarithmeticFunc_BinaryTree)
-        {
+    for (auto iter = m_rFuncList.begin(); iter != m_rFuncList.end(); iter ++) {
+        if (iter->first > EarithmeticFunc_BinaryTree) {
             break;
         }
         m_rShowList.push_back(iter->second);
@@ -113,71 +107,55 @@ void arithmeticMgr::init(int nMax)
     //m_rShowList.push_back(m_rFuncList[EarithmeticFunc_Shell]);
 }
 
-void arithmeticMgr::refresh()
-{
+void arithmeticMgr::refresh() {
     stop();
     random();
     start();
 }
 
-void arithmeticMgr::random()
-{
+void arithmeticMgr::random() {
     m_rSortData.rondom(rand() % 10 + 20, m_nMax);
 }
 
-void arithmeticMgr::setShowList(vector<int>& rList)
-{
+void arithmeticMgr::setShowList(vector<int>& rList) {
     stop();
     m_rShowList.clear();
 
-    for (size_t i = 0; i < rList.size(); i++)
-    {
+    for (size_t i = 0; i < rList.size(); i++) {
         m_rShowList.push_back(m_rFuncList[rList[i]]);
     }
     start();
 }
 
-void arithmeticMgr::getShowList(vector<int>& rList)
-{
+void arithmeticMgr::getShowList(vector<int>& rList) {
     rList.clear();
-    if (m_rShowList.size() != NULL)
-    {
-        for (list<arithmeticNode*>::iterator iter = m_rShowList.begin(); iter != m_rShowList.end(); iter ++)
-        {
-            arithmeticNode* pNode = *iter;
-            if (pNode != NULL)
-            {
+    if (m_rShowList.size() > 0) {
+        for (auto iter = m_rShowList.begin(); iter != m_rShowList.end(); iter ++) {
+            auto pNode = *iter;
+            if (pNode != nullptr) {
                 rList.push_back(pNode->getType());
             }
         }
-    }
-    else
-    {
-        for (map<int, arithmeticNode*>::iterator iter = m_rFuncList.begin(); iter != m_rFuncList.end(); iter ++)
-        {
+    } else {
+        for (auto iter = m_rFuncList.begin(); iter != m_rFuncList.end(); iter ++) {
             rList.push_back(iter->first);
         }
     }
 }
 
-void arithmeticMgr::start()
-{
+void arithmeticMgr::start() {
     m_iter = m_rShowList.begin();
-    if (m_iter != m_rShowList.end())
-    {
+    if (m_iter != m_rShowList.end()) {
         m_rSortData.reInit();
         (*m_iter)->sort(m_rSortData);
         m_rSortData.setBegin();
     }
 }
 
-bool arithmeticMgr::getNext()
-{
-    if (m_iter != m_rShowList.end())
-    {
+bool arithmeticMgr::getNext() {
+    if (m_iter != m_rShowList.end()) {
         m_iter ++;
-        if (m_iter != m_rShowList.end())
-        {
+        if (m_iter != m_rShowList.end()) {
             m_rSortData.reInit();
             (*m_iter)->sort(m_rSortData);
             m_rSortData.setBegin();
@@ -187,22 +165,18 @@ bool arithmeticMgr::getNext()
     return false;
 }
 
-void arithmeticMgr::stop()
-{
+void arithmeticMgr::stop() {
     m_iter = m_rShowList.end();
 }
 
-int arithmeticMgr::current()
-{
-    if (m_iter != m_rShowList.end())
-    {
+int arithmeticMgr::current() {
+    if (m_iter != m_rShowList.end()) {
         return (*m_iter)->getType();
     }
     return EarithmeticFunc_None;
 }
 
 
-arithmeticData& arithmeticMgr::getarithmeticData()
-{
+arithmeticData& arithmeticMgr::getarithmeticData() {
     return m_rSortData;
 }

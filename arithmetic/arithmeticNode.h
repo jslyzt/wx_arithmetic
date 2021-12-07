@@ -4,8 +4,7 @@
 #include <vector>
 using namespace std;
 
-enum EarithmeticFuncTp
-{
+enum EarithmeticFuncTp {
     EarithmeticFunc_None = 0,       //≥ı º
     EarithmeticFunc_MaoPao,         //√∞≈›≈≈–Ú
     EarithmeticFunc_2Maopao,        //À´œÚ√∞≈›≈≈–Ú
@@ -30,8 +29,7 @@ enum EarithmeticFuncTp
 };
 
 ////////////////////////////////////////////////////
-class arithmeticData
-{
+class arithmeticData {
 public:
     arithmeticData();
     ~arithmeticData();
@@ -42,12 +40,12 @@ public:
     vector<int>* getStepInfo();
     bool    toEnd();
     void    setBegin();
-    int     getMaxStep() {return m_nMaxStep;}
+    int     getMaxStep() { return m_nMaxStep; }
     int     getStep();
-    void    setMaxStep(int nStep) {m_nMaxStep = nStep;}
+    void    setMaxStep(int nStep) { m_nMaxStep = nStep; }
     void    saveStep(int nStep);
     void    saveStep(int nStep, int nPos, vector<int>& rList);
-    vector<int>& getBaseData() {return m_Base;}
+    vector<int>& getBaseData() { return m_Base; }
 
     void    exchange(int nStep, int posA, int posB);
     void    addValue(int nStep, int nPos, int nVaule);
@@ -59,26 +57,24 @@ private:
 private:
     vector<int> m_Base;
     int*        m_pSort;
-    map<int, vector<int> > m_rStepList;
-    map<int, vector<int> >::iterator m_iter;
+    map<int, vector<int>> m_rStepList;
+    map<int, vector<int>>::iterator m_iter;
     int         m_nMaxStep;
 };
 
-class arithmeticNode
-{
+class arithmeticNode {
 public:
     arithmeticNode(int nTp);
     ~arithmeticNode(void);
     virtual void sort(arithmeticData& rData);
-    int getType() {return m_nType;}
+    int getType() { return m_nType; }
 protected:
     int m_nType;    //¿‡–Õ
 };
 
 ////////////////////////////////////////////////////
 //√∞≈›≈≈–Ú
-class arithmeticMaoPao: public arithmeticNode
-{
+class arithmeticMaoPao: public arithmeticNode {
 public:
     arithmeticMaoPao();
     ~arithmeticMaoPao();
@@ -87,8 +83,7 @@ public:
 
 ////////////////////////////////////////////////////
 //À´œÚ√∞≈›≈≈–Ú
-class arithmetic2MaoPao: public arithmeticNode
-{
+class arithmetic2MaoPao: public arithmeticNode {
 public:
     arithmetic2MaoPao();
     ~arithmetic2MaoPao();
@@ -98,8 +93,7 @@ public:
 
 ////////////////////////////////////////////////////
 //≤Â»Î≈≈–Ú
-class arithmeticInsert: public arithmeticNode
-{
+class arithmeticInsert: public arithmeticNode {
 public:
     arithmeticInsert();
     ~arithmeticInsert();
@@ -109,8 +103,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Õ∞≈≈–Ú
-class arithmeticDrum: public arithmeticNode
-{
+class arithmeticDrum: public arithmeticNode {
 public:
     arithmeticDrum();
     ~arithmeticDrum();
@@ -122,8 +115,7 @@ private:
 
 ////////////////////////////////////////////////////
 //º∆ ˝≈≈–Ú
-class arithmeticTally: public arithmeticNode
-{
+class arithmeticTally: public arithmeticNode {
 public:
     arithmeticTally();
     ~arithmeticTally();
@@ -133,8 +125,7 @@ public:
 
 ////////////////////////////////////////////////////
 //πÈ≤¢≈≈–Ú
-class arithmeticMerger: public arithmeticNode
-{
+class arithmeticMerger: public arithmeticNode {
 public:
     arithmeticMerger();
     ~arithmeticMerger();
@@ -147,8 +138,7 @@ private:
 
 ////////////////////////////////////////////////////
 //‘≠µÿπÈ≤¢≈≈–Ú
-class arithmeticMergerLo: public arithmeticNode
-{
+class arithmeticMergerLo: public arithmeticNode {
 public:
     arithmeticMergerLo();
     ~arithmeticMergerLo();
@@ -163,8 +153,7 @@ private:
 
 ////////////////////////////////////////////////////
 //ª˘ ˝≈≈–ÚMSD
-class arithmeticBaseM: public arithmeticNode
-{
+class arithmeticBaseM: public arithmeticNode {
 public:
     arithmeticBaseM();
     ~arithmeticBaseM();
@@ -177,8 +166,7 @@ private:
 
 ////////////////////////////////////////////////////
 //ª˘ ˝≈≈–ÚLSD
-class arithmeticBaseL: public arithmeticNode
-{
+class arithmeticBaseL: public arithmeticNode {
 public:
     arithmeticBaseL();
     ~arithmeticBaseL();
@@ -191,8 +179,7 @@ private:
 
 ////////////////////////////////////////////////////
 //—°‘Ò≈≈–Ú
-class arithmeticChoose: public arithmeticNode
-{
+class arithmeticChoose: public arithmeticNode {
 public:
     arithmeticChoose();
     ~arithmeticChoose();
@@ -204,8 +191,7 @@ private:
 
 ////////////////////////////////////////////////////
 //øÏÀŸ≈≈–Ú
-class arithmeticQuick: public arithmeticNode
-{
+class arithmeticQuick: public arithmeticNode {
 public:
     arithmeticQuick();
     ~arithmeticQuick();
@@ -217,8 +203,7 @@ private:
 
 ////////////////////////////////////////////////////
 //∂˛≤Ê ˜≈≈–Ú
-class arithmeticBinaryTree: public arithmeticNode
-{
+class arithmeticBinaryTree: public arithmeticNode {
 public:
     arithmeticBinaryTree();
     ~arithmeticBinaryTree();
@@ -228,8 +213,7 @@ public:
 
 ////////////////////////////////////////////////////
 //œ£∂˚≈≈–Ú
-class arithmeticShell: public arithmeticNode
-{
+class arithmeticShell: public arithmeticNode {
 public:
     arithmeticShell();
     ~arithmeticShell();
@@ -239,8 +223,7 @@ public:
 
 ////////////////////////////////////////////////////
 //∂—≈≈–Ú
-class arithmeticHeap: public arithmeticNode
-{
+class arithmeticHeap: public arithmeticNode {
 public:
     arithmeticHeap();
     ~arithmeticHeap();
@@ -251,8 +234,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Gnome≈≈–Ú
-class arithmeticGnome: public arithmeticNode
-{
+class arithmeticGnome: public arithmeticNode {
 public:
     arithmeticGnome();
     ~arithmeticGnome();
@@ -262,8 +244,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Library≈≈–Ú
-class arithmeticLibrary: public arithmeticNode
-{
+class arithmeticLibrary: public arithmeticNode {
 public:
     arithmeticLibrary();
     ~arithmeticLibrary();
@@ -272,8 +253,7 @@ public:
 };
 ////////////////////////////////////////////////////
 //Comb≈≈–Ú
-class arithmeticComb: public arithmeticNode
-{
+class arithmeticComb: public arithmeticNode {
 public:
     arithmeticComb();
     ~arithmeticComb();
@@ -283,8 +263,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Smooth≈≈–Ú
-class arithmeticSmooth: public arithmeticNode
-{
+class arithmeticSmooth: public arithmeticNode {
 public:
     arithmeticSmooth();
     ~arithmeticSmooth();
@@ -294,8 +273,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Intro≈≈–Ú
-class arithmeticIntro: public arithmeticNode
-{
+class arithmeticIntro: public arithmeticNode {
 public:
     arithmeticIntro();
     ~arithmeticIntro();
@@ -305,8 +283,7 @@ public:
 
 ////////////////////////////////////////////////////
 //Patience≈≈–Ú
-class arithmeticPatience: public arithmeticNode
-{
+class arithmeticPatience: public arithmeticNode {
 public:
     arithmeticPatience();
     ~arithmeticPatience();

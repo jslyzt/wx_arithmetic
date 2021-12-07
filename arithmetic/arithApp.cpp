@@ -1,7 +1,6 @@
 #include "arithApp.h"
 
-bool arithApp::OnInit()
-{
+bool arithApp::OnInit() {
     // 创建主窗口
     arithForme* frame = new arithForme(wxT("C++算法演示程序"));
     //设置宽高

@@ -2,108 +2,77 @@
 #include <stack>
 
 BinTree::BinTree()
-    : root(nullptr)
-{
+    : root(nullptr) {
 }
 
-BinTree::~BinTree()
-{
+BinTree::~BinTree() {
     clear();
 }
 
-void BinTree::insert(int val)
-{
-    if (root == nullptr)
-    {
+void BinTree::insert(int val) {
+    if (root == nullptr) {
         root = new Node{ val, 1, nullptr, nullptr };
-    }
-    else
-    {
+    } else {
         insert(root, val);
     }
 }
 
-void BinTree::clear()
-{
-    if (root != nullptr)
-    {
+void BinTree::clear() {
+    if (root != nullptr) {
         clear(root);
         root = nullptr;
     }
 }
 
-void BinTree::clear(Node* node)
-{
-    if (node == nullptr)
-    {
+void BinTree::clear(Node* node) {
+    if (node == nullptr) {
         return;
     }
-    if (node->left != nullptr)
-    {
+    if (node->left != nullptr) {
         clear(node->left);
         node->left = nullptr;
     }
-    if (node->right != nullptr)
-    {
+    if (node->right != nullptr) {
         clear(node->right);
         node->right = nullptr;
     }
     delete node;
 }
 
-bool BinTree::insert(Node* node, int val)
-{
-    if (node == nullptr)
-    {
+bool BinTree::insert(Node* node, int val) {
+    if (node == nullptr) {
         return false;
     }
-    if (val == node->val)
-    {
+    if (val == node->val) {
         node->cnt++;
         return true;
-    }
-    else if (val > node->val)
-    {
-        if (node->right == nullptr)
-        {
+    } else if (val > node->val) {
+        if (node->right == nullptr) {
             node->right = new Node{ val, 1, nullptr, nullptr };
-        }
-        else
-        {
+        } else {
             insert(node->right, val);
         }
-    }
-    else
-    {
-        if (node->left == nullptr)
-        {
+    } else {
+        if (node->left == nullptr) {
             node->left = new Node{ val, 1, nullptr, nullptr };
-        }
-        else
-        {
+        } else {
             insert(node->left, val);
         }
     }
     return true;
 }
 
-std::vector<int> BinTree::order()
-{
+std::vector<int> BinTree::order() {
     auto vals = std::vector<int>();
-    if (root != nullptr)
-    {
+    if (root != nullptr) {
+        auto node = root;
         std::stack<Node*> stack;
-        Node* node = root;
 
-        while (node != nullptr || stack.empty() == false)
-        {
-            if (node != nullptr)
-            {
+        while (node != nullptr || stack.empty() == false) {
+            if (node != nullptr) {
                 stack.push(node);
                 node = node->left;
-            }
-            else
-            {
+            } else {
                 node = stack.top();
                 stack.pop();
                 for (int i = 0; i < node->cnt; i++) {

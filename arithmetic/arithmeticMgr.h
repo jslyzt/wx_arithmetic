@@ -6,8 +6,7 @@ using namespace std;
 
 #include "arithmeticNode.h"
 
-class arithmeticMgr
-{
+class arithmeticMgr {
 public:
     arithmeticMgr(void);
     ~arithmeticMgr(void);

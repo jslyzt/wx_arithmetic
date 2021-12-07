@@ -3,8 +3,7 @@
 #include "wx/wx.h"
 
 class arithForme;
-class renderTimer: public wxTimer
-{
+class renderTimer: public wxTimer {
 public:
     renderTimer(arithForme* pFrame);
     ~renderTimer(void);

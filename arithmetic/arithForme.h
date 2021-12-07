@@ -7,8 +7,7 @@
 #include "arithmeticMgr.h"
 #include "arithmeticNode.h"
 
-enum EairthmeticID
-{
+enum EairthmeticID {
     airthmeticID_Refresh = wxID_HIGHEST,
     airthmeticID_Group,
     airthmeticID_Start,
@@ -18,16 +17,14 @@ enum EairthmeticID
     airthmeticID_MaxID = 100,
 };
 
-struct arithIdName
-{
-    int		m_nID;
-    wxString	m_strName;
+struct arithIdName {
+    int         m_nID;
+    wxString    m_strName;
 };
 
 class slistDialog;
 // 定义主窗口类
-class arithForme : public wxFrame
-{
+class arithForme : public wxFrame {
 public:
     // 主窗口类的构造函数
     arithForme(const wxString& title);
@@ -58,16 +55,15 @@ private:
     DECLARE_EVENT_TABLE()
 
 private:
-    renderTimer		m_rTimer;
-    arithmeticMgr	m_rarithmeticMgr;
-    int				m_nSpeed;
-    bool			m_bStop;
-    slistDialog*	m_listDialog;
+    renderTimer     m_rTimer;
+    arithmeticMgr   m_rarithmeticMgr;
+    int             m_nSpeed;
+    bool            m_bStop;
+    slistDialog*    m_listDialog;
 };
 
 ////////////////////////////////////////////////////////////////////////
-class slistDialog : public wxDialog
-{
+class slistDialog : public wxDialog {
 public:
 
     slistDialog(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style);
@@ -90,5 +86,5 @@ protected:
     wxButton* btnSave;
     wxButton* btnReset;
     wxButton* btnClose;
-    vector<int>	rdefList;
+    vector<int> rdefList;
 };
